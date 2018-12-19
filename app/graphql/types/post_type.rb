@@ -1,7 +1,7 @@
 Types::PostType = GraphQL::ObjectType.define do
   name 'Post'
 
-  field :id, !type.ID
-  field :title, !type.String
-  field :description, !type.String
+  field :id, !types.ID
+  field :title, !types.String
+  field :description, !types.String
 end
