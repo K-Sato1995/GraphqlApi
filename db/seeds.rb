@@ -1,5 +1,7 @@
-10.times do |i|
+1.upto(10) do |i|
   post = Post.new(title: "title#{i}", description: "description#{i}")
-  post.comments.build(content: "comment#{i}")
+  2.times do |j|
+    post.comments.build(content: "comment#{i}: #{j}")
+  end
   post.save
 end
