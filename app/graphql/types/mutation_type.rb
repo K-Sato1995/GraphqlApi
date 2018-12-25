@@ -1,8 +1,8 @@
 module Types
   class MutationType < Types::BaseObject
-    field :createComment, mutation: Mutations::CreateComment
-    field :deletePost, mutation: Mutations::DeletePost
-    field :updatePost, mutation: Mutations::UpdatePost
-    field :createPost, mutation: Mutations::CreatePost
+    field :createComment, mutation: Mutations::CommentMutations::CreateComment
+    field :deletePost, mutation: Mutations::PostMutations::DeletePost
+    field :updatePost, mutation: Mutations::PostMutations::UpdatePost
+    field :createPost, mutation: Mutations::PostMutations::CreatePost
   end
 end
