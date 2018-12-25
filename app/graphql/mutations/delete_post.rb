@@ -1,5 +1,5 @@
 module Mutations
-  class DeletePost < GraphQL::Schema::RelayClassicMutation
+  class DeletePost < Mutations::BaseMutation
     graphql_name 'DeletePost'
 
     field :post, Types::PostType, null: true

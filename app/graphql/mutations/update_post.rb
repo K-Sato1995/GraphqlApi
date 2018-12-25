@@ -1,5 +1,5 @@
 module Mutations
-  class UpdatePost < GraphQL::Schema::RelayClassicMutation
+  class UpdatePost < Mutations::BaseMutation
     graphql_name 'UpdatePost'
 
     field :post, Types::PostType, null: true
