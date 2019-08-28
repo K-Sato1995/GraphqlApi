@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Mutations::PostMutations::UpdatePost do
+RSpec.describe Mutations::Posts::UpdatePost do
   let!(:post) { create(:post) }
   subject(:mutation) { described_class.new(object: nil, context: nil) }
   let(:attributes) { attributes_for(:post, id: post.id, title: 'New Title') }

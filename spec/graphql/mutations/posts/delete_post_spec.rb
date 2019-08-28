@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Mutations::PostMutations::DeletePost do
+RSpec.describe Mutations::Posts::DeletePost do
   let!(:post) { create(:post) }
   let(:attributes) { attributes_for(:post, id: post.id) }
   subject(:mutation) { described_class.new(object: nil, context: nil) }

@@ -1,5 +1,5 @@
 module Mutations
-  module CommentMutations
+  module Comments
     class CreateComment < Mutations::BaseMutation
       graphql_name 'CreateComment'
 
