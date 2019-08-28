@@ -1,5 +1,5 @@
 module Mutations
-  module PostMutations
+  module Posts
     class CreatePost < Mutations::BaseMutation
       graphql_name 'CreatePost'
 

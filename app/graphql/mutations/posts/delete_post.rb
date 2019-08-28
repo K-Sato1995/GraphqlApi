@@ -1,18 +1,16 @@
 module Mutations
-  module PostMutations
-    class UpdatePost < Mutations::BaseMutation
-      graphql_name 'UpdatePost'
+  module Posts
+    class DeletePost < Mutations::BaseMutation
+      graphql_name 'DeletePost'
 
       field :post, Types::PostType, null: true
       field :result, Boolean, null: true
 
       argument :id, ID, required: true
-      argument :title, String, required: false
-      argument :description, String, required: false
 
       def resolve(**args)
         post = Post.find(args[:id])
-        post.update(title: args[:title], description: args[:description])
+        post.destroy
         {
           post: post,
           result: post.errors.blank?
