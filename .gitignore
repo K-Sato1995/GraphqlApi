@@ -20,7 +20,7 @@
 .byebug_history
 
 # gems
-/vender/bundle
+vender/bundle
 
 # tags
 .tags

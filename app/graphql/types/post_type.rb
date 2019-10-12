@@ -7,5 +7,11 @@ module Types
     field :status, Types::PostStatus, null: false
     field :media_item, Types::MediaItemType, null: true
     field :comments, [Types::CommentType], null: false
+
+    def media_item
+      return object.audio_clip if object.audio_clip
+
+      object.video_clip
+    end
   end
 end

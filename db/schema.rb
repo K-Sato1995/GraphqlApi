@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20191010111523) do
   end
 
   create_table "video_clips", force: :cascade do |t|
-    t.string "previewURL"
+    t.string "preview_url"
     t.integer "resolution"
     t.integer "post_id"
     t.datetime "created_at", null: false
