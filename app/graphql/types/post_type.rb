@@ -5,6 +5,7 @@ module Types
     field :title, String, null: false
     field :description, String, null: false
     field :status, Types::PostStatus, null: false
+    field :media_item, Types::MediaItemType, null: true
     field :comments, [Types::CommentType], null: false
   end
 end

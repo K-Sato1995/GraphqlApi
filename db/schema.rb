@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191010111531) do
+ActiveRecord::Schema.define(version: 20191010111523) do
 
   create_table "audio_clips", force: :cascade do |t|
     t.integer "duration"
+    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_audio_clips_on_post_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -24,26 +26,6 @@ ActiveRecord::Schema.define(version: 20191010111531) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
-  end
-
-  create_table "contracted_authors", force: :cascade do |t|
-    t.string "name"
-    t.integer "contract_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "corporate_authors", force: :cascade do |t|
-    t.string "name"
-    t.integer "employee_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "images", force: :cascade do |t|
-    t.string "thumbnailURL"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -57,8 +39,10 @@ ActiveRecord::Schema.define(version: 20191010111531) do
   create_table "video_clips", force: :cascade do |t|
     t.string "previewURL"
     t.integer "resolution"
+    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_video_clips_on_post_id"
   end
 
 end

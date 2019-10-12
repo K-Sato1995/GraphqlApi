@@ -19,6 +19,9 @@
 
 .byebug_history
 
+# gems
+/vender/bundle
+
 # tags
 .tags
 .tags1
