@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191009103650) do
+ActiveRecord::Schema.define(version: 20191010111523) do
+
+  create_table "audio_clips", force: :cascade do |t|
+    t.integer "duration"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_audio_clips_on_post_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -26,6 +34,15 @@ ActiveRecord::Schema.define(version: 20191009103650) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status"
+  end
+
+  create_table "video_clips", force: :cascade do |t|
+    t.string "preview_url"
+    t.integer "resolution"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_video_clips_on_post_id"
   end
 
 end

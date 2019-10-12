@@ -1,4 +1,5 @@
 # Setup
+
 Run the commands below.
 
 ```console
@@ -15,12 +16,12 @@ Run `rails s` and send following queries and mutations.
 
 ```graphql
 {
- posts {
-   id
-   title
-   description
-   comments
- }
+  posts {
+    id
+    title
+    description
+    comments
+  }
 }
 ```
 
@@ -28,29 +29,23 @@ Run `rails s` and send following queries and mutations.
 
 ```graphql
 {
- post(id:1) {
-   id
-   title
-   description
-   comments
- }
+  post(id: 1) {
+    id
+    title
+    description
+    comments
+  }
 }
-
 ```
 
 ## Creating a post
 
 ```graphql
 mutation {
-  createPost(
-    input:{
-      title: "title1"
-      description: "description1"
-    }
-  ){
+  createPost(input: { title: "title1", description: "description1" }) {
     post {
       id
-      title 
+      title
       description
     }
   }
@@ -61,49 +56,35 @@ mutation {
 
 ```graphql
 mutation {
-  updatePost(
-    input:{
-      id: 1
-      title: "Updated"
-      description: "UPdated"
-    }
-  ){
+  updatePost(input: { id: 1, title: "Updated", description: "UPdated" }) {
     post {
       id
-      title 
+      title
       description
     }
   }
 }
 ```
+
 ## Deleting a post
 
 ```graphql
 mutation {
-  deletePost(
-    input:{
-      id: 1
-    }
-  ){
+  deletePost(input: { id: 1 }) {
     post {
       id
-      title 
+      title
       description
     }
   }
 }
 ```
 
-## Creating a comment 
+## Creating a comment
 
 ```graphql
 mutation {
-  createComment(
-    input:{
-      postId: 3
-      content: "NEW COMMENT"
-    }
-  ){
+  createComment(input: { postId: 3, content: "NEW COMMENT" }) {
     comment {
       id
       content
@@ -115,6 +96,35 @@ mutation {
           content
         }
       }
+    }
+  }
+}
+```
+
+# Query for getting all the related information
+
+```graphql
+{
+  posts {
+    id
+    title
+    description
+    status
+    mediaItem {
+      __typename
+      ... on AudioClip {
+        id
+        duration
+      }
+      ... on VideoClip {
+        id
+        previewUrl
+        resolution
+      }
+    }
+    comments {
+      id
+      content
     }
   }
 }
