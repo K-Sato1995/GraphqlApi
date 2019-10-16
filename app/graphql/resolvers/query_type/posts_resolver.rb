@@ -4,7 +4,7 @@ module Resolvers
       type [Types::PostType], null: false
 
       def resolve(**_args)
-        Post.all
+        context[:current_user].posts
       end
     end
   end

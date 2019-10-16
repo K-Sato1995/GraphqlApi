@@ -4,5 +4,9 @@ module Types
     field :id, ID, null: false
     field :content, String, null: false
     field :post, Types::PostType, null: false
+
+    def self.authorized?(object, context)
+      super && (!context[:current_user].banned?)
+    end
   end
 end
