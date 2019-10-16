@@ -6,7 +6,7 @@ module Types
     field :description, String, null: false
     field :status, Types::PostStatus, null: false
     field :media_item, Types::MediaItemType, null: true
-    field :comments, [Types::CommentType], null: false
+    field :comments, [Types::CommentType], null: true
 
     def media_item
       return object.audio_clip if object.audio_clip
