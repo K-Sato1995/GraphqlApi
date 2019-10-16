@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
   include Auth
+  include Pundit
   # before_action :authenticate
 
   private
