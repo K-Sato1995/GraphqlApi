@@ -13,6 +13,6 @@ class ApplicationController < ActionController::API
   end
 
   def unauthorized
-    render :status => :unauthorized
+    head :unauthorized
   end
 end
