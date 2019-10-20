@@ -5,7 +5,8 @@ module Resolvers
       argument :id, ID, required: false
 
       def resolve(**args)
-        Post.find(args[:id])
+        post = Post.find(args[:id])
+        Pundit.authorize(context[:current_user], post, :show?)
       end
     end
   end

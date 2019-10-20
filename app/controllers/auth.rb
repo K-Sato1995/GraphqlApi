@@ -72,7 +72,7 @@ module Auth
      ########################################
      ## TODO: ADD YOUR PROJECT ID         ##
      #######################################
-     project_id = ""
+     project_id = ENV['FIREBASE_PROJECT_ID']
      payload = json[:payload]
      header = json[:header]
 

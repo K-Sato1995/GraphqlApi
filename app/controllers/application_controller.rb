@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
   include Auth
-  # before_action :authenticate
+  include Pundit
+  before_action :authenticate
 
   private
 
@@ -12,6 +13,6 @@ class ApplicationController < ActionController::API
   end
 
   def unauthorized
-    render :status => :unauthorized
+    head :unauthorized
   end
 end
