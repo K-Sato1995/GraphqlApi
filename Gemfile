@@ -7,7 +7,7 @@ end
 
 
 gem 'rails', '~> 5.1.6', '>= 5.1.6.1'
-gem 'sqlite3'
+gem 'postgresql'
 gem 'puma', '~> 3.7'
 gem 'graphql'
 gem 'sass-rails'

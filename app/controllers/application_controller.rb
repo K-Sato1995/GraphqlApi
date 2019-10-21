@@ -1,5 +1,5 @@
-class ApplicationController < ActionController::API
-  include Auth
+class ApplicationController < ActionController::Base
+  include FirebaseHelper
   include Pundit
   before_action :authenticate
   attr_reader :current_user
@@ -7,12 +7,15 @@ class ApplicationController < ActionController::API
   private
 
   def authenticate
-    token = request.headers['authorization']
-    return unauthorized unless Auth.verify_id_token(token.remove('Bearer '))
-    @current_user = User.fourth
-  end
-
-  def unauthorized
-    head :unauthorized
+    authenticate_with_http_token do |token, options|
+      begin
+        decoded_token = FirebaseHelper::Auth.verify_id_token(token)
+        user_id = decoded_token['uid']
+        @current_user = User.find_or_create_by(id: user_id)
+      rescue => e
+        logger.error(e.message)
+        false
+      end
+    end
   end
 end
