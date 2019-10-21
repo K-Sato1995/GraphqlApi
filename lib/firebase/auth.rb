@@ -2,7 +2,7 @@ require 'jwt'
 require 'yaml'
 require 'net/http'
 
-module FirebaseHelper
+module Firebase
   module Auth
     ALGORITHM = 'RS256'
     ISSUER_BASE_URL = 'https://securetoken.google.com/'
