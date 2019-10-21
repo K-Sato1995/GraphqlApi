@@ -12,9 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20191015224732) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+  enable_extension "pgcrypto"
+
   create_table "audio_clips", force: :cascade do |t|
     t.integer "duration"
-    t.integer "post_id"
+    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_audio_clips_on_post_id"
@@ -22,7 +27,7 @@ ActiveRecord::Schema.define(version: 20191015224732) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.integer "post_id"
+    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
@@ -31,20 +36,24 @@ ActiveRecord::Schema.define(version: 20191015224732) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'uuid' for column 'id'
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.integer "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "video_clips", force: :cascade do |t|
     t.string "preview_url"
     t.integer "resolution"
-    t.integer "post_id"
+    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_video_clips_on_post_id"
