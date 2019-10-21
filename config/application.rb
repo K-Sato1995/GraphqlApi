@@ -27,6 +27,7 @@ module GraphqlApi
     end
 
     config.load_defaults 5.1
+    config.paths.add "lib", eager_load: true
     config.api_only = true
   end
 end
