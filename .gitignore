@@ -20,8 +20,9 @@
 .byebug_history
 
 # gems
-vender/bundle
+/vendor/*
 
 # tags
 .tags
 .tags1
+.env
