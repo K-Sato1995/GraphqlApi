@@ -3,13 +3,9 @@ class GraphqlController < ApplicationController
     variables = ensure_hash(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
-    ###################### CONTEXT #############################
-    ## First: <User id: 1, name: "user0", role: "banned", created_at: "2019-10-15 23:33:17", updated_at: "2019-10-15 23:33:17">
-    ## Second: <User id: 2, name: "user1", role: "reader", created_at: "2019-10-15 23:33:17", updated_at: "2019-10-15 23:33:17">
-    ## Third: <User id: 3, name: "user2", role: "sub_admin", created_at: "2019-10-15 23:33:17", updated_at: "2019-10-15 23:33:17">
-    ## Fourth: <User id: 4, name: "user3", role: "admin", created_at: "2019-10-15 23:33:17", updated_at: "2019-10-15 23:33:17">
+    ################### CONTEXT #########################
     context = { current_user: @current_user }
-    ###########################################################
+    ####################################################
     result = GraphqlApiSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
   rescue => e
