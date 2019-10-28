@@ -101,6 +101,20 @@ mutation {
 }
 ```
 
+## Creating a User
+
+```graphql
+mutation {
+  createUser(input: { name: "title1", role: 1 }) {
+    user {
+      id
+      name
+      role
+    }
+  }
+}
+```
+
 # Query for getting all the related information
 
 ```graphql
