@@ -9,15 +9,20 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate
-    authenticate_with_http_token do |token, options|
-      begin
-        decoded_token = Firebase::Auth.verify_id_token(token)
-        user_id = decoded_token['uid']
-        @current_user = User.find_or_create_by(id: user_id)
-      rescue => e
-        logger.error(e.message)
-        false
-      end
+    token = request.headers["authorization"]
+    p User.all.size
+    p token
+    begin
+      decoded_token = Firebase::Auth.verify_id_token(token.remove("Bearer "))
+      user_id = decoded_token['uid']
+      @current_user = User.find_or_create_by(id: user_id)
+    rescue => e
+      logger.error(e.message)
+      unauthorized
     end
+  end
+
+  def unauthorized
+    head :unauthorized
   end
 end

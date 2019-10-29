@@ -105,11 +105,12 @@ mutation {
 
 ```graphql
 mutation {
-  createUser(input: { name: "title1", role: 1 }) {
+  createUser(input: { uid: "UniqueID", name: "title1", role: 1 }) {
     user {
       id
       name
       role
+      uid
     }
   }
 }
