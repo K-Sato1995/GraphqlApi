@@ -8,9 +8,10 @@ module Mutations
 
       argument :name, String, required: false
       argument :role, Int, required: false
-
+      argument :uid, String, required: true
+      
       def resolve(**args)
-        user = User.create(name: args[:name], role: args[:role])
+        user = User.create(name: args[:name], role: args[:role], uid: args[:uid])
         {
           user: user,
           result: user.errors.blank?

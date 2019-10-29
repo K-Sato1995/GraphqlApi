@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20191015224732) do
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.integer "role"
+    t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
