@@ -1,4 +1,4 @@
-require '/Users/katsuki/WorkSpace/Rails/graphql_api/lib/auth/auth_token.rb'
+require 'auth/auth_token'
 
 module Mutations
   module Users
@@ -20,9 +20,11 @@ module Mutations
         # ensures we have the correct user
         return unless user
         return unless user.authenticate(email[:password])
- 
+
         token = AuthToken.token_for_user(user)
- 
+
+        context[:session][:token] = token
+  
         { user: user, token: token }
       end
     end
