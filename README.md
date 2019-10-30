@@ -105,13 +105,29 @@ mutation {
 
 ```graphql
 mutation {
-  createUser(input: { uid: "UniqueID", name: "title1", role: 1 }) {
+  createUser(
+    input: {
+      name: "title1"
+      authProvider: { email: { email: "els@e.scom", password: "passsssord" } }
+    }
+  ) {
     user {
       id
       name
-      role
-      uid
+      email
     }
+  }
+}
+```
+
+## Signing in a User
+
+```graphql
+mutation {
+  signinUser(
+    input: { email: { email: "els@e.scom", password: "passsssord" } }
+  ) {
+    token
   }
 }
 ```

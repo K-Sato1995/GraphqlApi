@@ -4,6 +4,7 @@ module Types
     field :id, Int, null: false
     field :name, String, null: true
     field :role, Int, null: true
-    field :uid, String, null: false
+    field :email, String, null: false
+    field :token, String, null: false
   end
 end
