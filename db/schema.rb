@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191015224732) do
+ActiveRecord::Schema.define(version: 2019_10_15_224732) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
-  enable_extension "pgcrypto"
 
   create_table "audio_clips", force: :cascade do |t|
     t.integer "duration"
