@@ -1,16 +1,11 @@
-require 'auth/auth_token'
-
 class GraphqlController < ApplicationController
-  include Auth
   def execute
     variables = ensure_hash(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
     ################### CONTEXT #########################
     context = {
-      # we need to provide session and current user
-      session: session,
-      current_user: AuthToken.user_from_token(session[:token])
+      current_user: @current_user
     }
     ####################################################
     result = GraphqlApiSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
@@ -21,7 +16,6 @@ class GraphqlController < ApplicationController
   end
 
   private
-
   # Handle form data, JSON body, or a blank value
   def ensure_hash(ambiguous_param)
     case ambiguous_param
