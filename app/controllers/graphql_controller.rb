@@ -1,12 +1,12 @@
 class GraphqlController < ApplicationController
+  before_action :authenticate_user!
+
   def execute
     variables = ensure_hash(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
     ################### CONTEXT #########################
-    context = {
-      current_user: @current_user
-    }
+    context = { current_user: current_user }
     ####################################################
     result = GraphqlApiSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
