@@ -4,7 +4,9 @@ module Resolvers
       type [Types::PostType], null: false
 
       def resolve(**_args)
-        context[:current_user].posts
+        Post.all
+        # Uncommnet the code below if you want to use current user to get the posts.
+        # context[:current_user].posts
       end
     end
   end
