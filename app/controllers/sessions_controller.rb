@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :authenticate
-
+  # Generate jwt tokens for signed in users
   def create
     user = User.find_by(email: auth_params[:email])
     if user.authenticate(auth_params[:password])

@@ -9,6 +9,7 @@ module Types
     field :comments, [Types::CommentType], null: true
     field :user, Types::UserType, null: false
 
+    # Union Type
     def media_item
       return object.audio_clip if object.audio_clip
 

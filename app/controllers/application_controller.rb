@@ -1,11 +1,13 @@
 class ApplicationController < ActionController::Base
-  include Pundit
-  before_action :authenticate
+  # Uncomment the code below if you want to authorize users
+  # include Pundit
+  # Uncomment the code below if you want to authenticate users
+  # before_action :authenticate
 
   private
 
   def authenticate
-    ## Refactoring
+    ## Needs some refactoring
     return unauthorized if request.headers['Authorization'].nil?
 
     token = request.headers['Authorization'].split(' ').last
