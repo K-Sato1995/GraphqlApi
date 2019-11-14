@@ -6,7 +6,8 @@ module Resolvers
 
       def resolve(**args)
         post = Post.find(args[:id])
-        Pundit.authorize(context[:current_user], post, :show?)
+        # Uncommnet the code below if you want to authorize users to get a specific post.
+        # Pundit.authorize(context[:current_user], post, :show?)
       end
     end
   end
