@@ -6,12 +6,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # JWT Token authentication
   def authenticate
-    ## Needs some refactoring
+    ########### Needs some refactoring #########################
     return unauthorized if request.headers['Authorization'].nil?
-
+    # Get the bearer Bearer from the headers
     token = request.headers['Authorization'].split(' ').last
 
+    # Decode the token and get user_id
     user_id = Auth::JsonWebToken.decode(token)['user']
     @current_user = User.find_by(id: user_id)
   end
