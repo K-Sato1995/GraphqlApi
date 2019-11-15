@@ -1,4 +1,4 @@
-4.times { |i| User.create(name: "user#{i}", role: i) }
+4.times { |i| User.create(name: "user#{i}",email: "#{i}@.com", password: "password", role: i) }
 
 User.all.each do |user|
   3.times do |i|

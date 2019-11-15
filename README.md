@@ -25,6 +25,25 @@ Run `rails s` and send following queries and mutations.
 }
 ```
 
+## Search Posts
+
+This is just an example.
+Check out [Ransack's README](https://github.com/activerecord-hackery/ransack#search-matchers) for more search Matchers.
+
+```graphql
+{
+  posts(q: { status_eq: "PUBLISHED" }) {
+    id
+    title
+    description
+    status
+    comments {
+      id
+    }
+  }
+}
+```
+
 ## Get a post
 
 ```graphql
