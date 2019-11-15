@@ -23,10 +23,11 @@ gem 'coffee-rails'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
-gem 'jwt'
-gem 'pundit'
+gem 'jwt' # JWT Token authentication
+gem 'pundit' # Authorization
 gem 'dotenv-rails'
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7' # Encrypt password
+gem 'ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
