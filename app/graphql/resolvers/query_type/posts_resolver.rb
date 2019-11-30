@@ -6,12 +6,7 @@ module Resolvers
 
       def resolve(**args)
         # Search Posts with Ransack
-        if args[:q].present?
-          @q = Post.ransack(args[:q])
-          @q.result(distinct: true).order(id: :asc).includes(:comments)
-        else
-          Post.all
-        end
+        Post.ransack(args[:q]).result(distinct: true).order(id: :desc)
       end
       # Uncommnet the code below if you want to use current user to get the posts.
       # def resolve(**_args)
