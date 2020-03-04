@@ -8,7 +8,7 @@ end
 
 gem 'rails', '~> 5.2.0'
 gem 'postgresql'
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.12'
 gem 'graphql'
 gem 'sass-rails'
 gem 'uglifier'
