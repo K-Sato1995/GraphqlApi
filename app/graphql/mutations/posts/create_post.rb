@@ -10,7 +10,7 @@ module Mutations
       argument :description, String, required: false
 
       def resolve(**args)
-        post = Post.create(title: args[:title], description: args[:description], user: context[:current_user])
+        post = Post.create(title: args[:title], description: args[:description], user: User.first)
         {
           post: post,
           result: post.errors.blank?
