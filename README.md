@@ -52,7 +52,10 @@ Check out [Ransack's README](https://github.com/activerecord-hackery/ransack#sea
     id
     title
     description
-    comments
+    comments {
+      id
+      content
+    }
   }
 }
 ```
