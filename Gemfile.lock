@@ -105,7 +105,7 @@ GEM
       activerecord (>= 5.2.1)
     postgresql (1.0.0)
       pg
-    puma (3.12.4)
+    puma (3.12.6)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
     rack (2.2.3)
@@ -212,7 +212,7 @@ DEPENDENCIES
   jwt
   listen (>= 3.0.5, < 3.2)
   postgresql
-  puma (~> 3.7)
+  puma (~> 3.12)
   pundit
   rack-cors
   rails (~> 5.2.0)
